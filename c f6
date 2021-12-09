@@ -1,0 +1,56 @@
+typedefstructnode
+{
+     intnode_data;
+	 structnode *right;
+	 structnode *left;
+}
+ node;
+ node *root = NULL;
+ AddBSTNode(&root, node_data);
+ 
+ void AddBSTNode(node **current_node, intadd_data)
+ {
+    if (*current_node== NULL)
+	{
+	   *current_node= malloc(sizeof(node));
+	   (*current_node)->left = (*current_node)->right = NULL;
+	   (*current_node)->node_data= add_data;
+	}
+	else
+	{
+	       if (add_data< (*current_node)->node_data)
+		     AddBSTNode(&(*current_node)->left, add_data);
+		   else if(add_data> (*current_node)->node_data)
+		      AddBSTNode(&(*current_node)->right, add_data);
+		   else
+		   printf(" Duplicate Element !! Not Allowed !!!");
+    }
+}
+void Preorder(node *tree_node)
+{
+    if(tree_node!= NULL)
+	{
+	     printf("Node%d", tree_node->node_data);
+		 Preorder(tree_node->left);
+		 Preorder(tree_node->right);
+    }
+}
+void Inorder(node *tree_node)
+{
+    if(tree_node!= NULL)
+	{
+		Inorder(tree_node->left);
+		printf("Node%d", tree_node->node_data);
+		Inorder(tree_node->right);
+	}
+}
+void Postorder(node *tree_node)
+{
+	if(tree_node!= NULL)
+	{
+		postorder(tree_node->left);
+		Postorder(tree_node->right);
+		printf("Node%d", tree_node->node_data);
+	}
+}
+
